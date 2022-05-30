@@ -10,7 +10,7 @@ require APPPATH . 'libraries/Format.php';
 
 
 
-class costeng extends REST_Controller {
+class data_reparasi_mesin extends REST_Controller {
 
     public function __construct()
     {
@@ -20,7 +20,7 @@ class costeng extends REST_Controller {
 
     public function index_get()
     {
-        $data = $this->costeng->getCosteng('biaya_reparasi');
+        $data = $this->costeng->getCosteng('data_reparasi_mesin');
 
         if ($data){
             $this->set_response([
