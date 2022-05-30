@@ -6,14 +6,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0"> Welcome </h1>
-            <h5 class="m-0"> Aplikasi Data PFN Padi Flour </h5>
-                  <img src="<?=base_url()."assets/"?>img/Brand.jpg"  class="brand-image" style="opacity: .8">
+            <h1 class="m-0"> Dashboard </h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard</li>
+              <li class="breadcrumb-item active">Starter Page</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -21,15 +19,55 @@
     </div>
     <!-- /.content-header -->
 
+    <!-- Main content -->
     <div class="content">
       <div class="container-fluid">
             <div class="card">
-
+              <div class="card-header">
+                <h3 class="card-title">Data Reparasi </h3>
+                <a href="<?= site_url('Operasional/Create_data_reparasi') ?>"><button type="button" class="btn btn-info float-right"><i class="fas fa-plus"></i> Tambah Data</button></a>
+              </div>
               <!-- /.card-header -->
-              
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                  	<th></th>
+                    <th>Mesin</th>
+                    <th>Report Tipe</th>
+                    <th>Risk</th>
+                    <th>PJ</th>
+                    <th>Indikasi</th>
+
+                    <th>Action</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  	<?php 
+		$no = 1;
+                 foreach($datanya as $u){ 
+		?>
+		<tr>
+			<td><?php echo $no++ ?></td>
+			<td><?php echo $u->Mesin ?></td>
+			<td><?php echo $u->Report_type ?></td>
+			<td><?php echo $u->Risk ?></td>
+			<td><?php echo $u->PJ ?></td>
+			<td><?php echo $u->Indikasi ?></td>
+
+			<td>
+			      <?php echo anchor('Operasional/Tampil_update/'.$u->ID,'Edit'); ?>
+                              <?php echo anchor('Operasional/hapus/'.$u->ID,'Hapus'); ?>
+			</td>
+		</tr>
+                 <?php } ?>
+                  </tfoot>
+                </table>
+              </div>
               <!-- /.card-body -->
             </div>
-       
+            <!-- /.card -->
+          
 <!-- ./wrapper -->
 
 <!-- jQuery -->

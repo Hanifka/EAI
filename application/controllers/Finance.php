@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Engineering extends CI_Controller {
+class Finance extends CI_Controller {
 
     public function __construct(){
         parent::__construct();
@@ -9,17 +9,17 @@ class Engineering extends CI_Controller {
         }
     public function Index()
     {
-        $data['datanya'] = $this->pfnmodel->tampil_data('biaya_reparasi')->result();
+        $data['datanya'] = $this->pfnmodel->tampil_data('budgeting')->result();
         $this->load->view('template/header');
         $this->load->view('template/sidebar');
-        $this->load->view('Engineering',$data);
+        $this->load->view('Finance',$data);
         $this->load->view('template/footer');
     } 
 
-    public function Create_Data_engineering(){
+    public function Create_Data_budgeting(){
         $this->load->view('template/header');
         $this->load->view('template/sidebar');
-        $this->load->view('Create_Engineering');
+        $this->load->view('Create_budgeting');
         $this->load->view('template/footer');
     }
  
@@ -30,28 +30,29 @@ class Engineering extends CI_Controller {
         $data4 = $this->input->post('data4');
         $data5 = $this->input->post('data5');
         $data = array(
-            'mesin' => $data1,
-            'biaya' => $data2,
-            'Engineer' => $data3,
-            'status' => $data4,
-            'keterangan' => $data5
+            'nama_issues' => $data1,
+            'Divisi' => $data2,
+            'Biaya_Reparasi' => $data3,
+            'Status' => $data4,
+            'Keterangan' => $data5
             );
-        $this->pfnmodel->input_data($data,'engineer');
+        $this->pfnmodel->input_data($data,'budgeting');
   redirect('Finance');
-    }
+
+}
 
     public function hapus($id){
-            $where = array('no' => $id);
-            $this->pfnmodel->hapus_data($where,'engineer');
-            redirect('Engineering');
+            $where = array('ID' => $id);
+            $this->pfnmodel->hapus_data($where,'budgeting');
+            redirect('Finance');
 }
 
     public function Tampil_update($id){
-        $where = array('no' => $id);
-        $data['user'] = $this->pfnmodel->edit_data($where,'engineer')->result();
+        $where = array('ID' => $id);
+        $data['user'] = $this->pfnmodel->edit_data($where,'budgeting')->result();
         $this->load->view('template/header');
         $this->load->view('template/sidebar');
-        $this->load->view('Update_Engineering',$data);
+        $this->load->view('Update_Budgeting',$data);
         $this->load->view('template/footer');
         }
 
@@ -64,19 +65,19 @@ class Engineering extends CI_Controller {
         $data5 = $this->input->post('data5');
         $data6 = $this->input->post('id');
         $data = array(
-            'mesin' => $data1,
-            'biaya' => $data2,
-            'Engineer' => $data3,
-            'status' => $data4,
-            'keterangan' => $data5
+           'nama_issues' => $data1,
+            'Divisi' => $data2,
+            'Biaya_Reparasi' => $data3,
+            'Status' => $data4,
+            'Keterangan' => $data5
             );
  
          $where = array(
-        'no' => $data6
+        'ID' => $data6
          );
  
-        $this->pfnmodel->update_data($where,$data,'engineer');
-        redirect('Engineering');
+        $this->pfnmodel->update_data($where,$data,'budgeting');
+        redirect('Finance');
 }
     // public function Tambahin()
     // {
