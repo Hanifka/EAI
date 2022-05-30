@@ -3,7 +3,7 @@
 
 class Costeng_model extends CI_Model
 {
-    public function getCosteng(){
-        return $this->db->get('engineer')->result_array();
+    public function getCosteng($data){
+        return $this->db->get($data)->result_array();
     }
 }
