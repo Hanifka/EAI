@@ -31,4 +31,77 @@ class data_rekruitasi extends REST_Controller {
         }
         
     }
+    public function index_delete(){
+        // $data = $this->costeng->getCosteng('data_rekruitasi');
+        $id = $this->delete('id');
+        if( $id === null){
+            $this->set_response([
+                'status' => false,
+                'message' => 'ISI ID !!'
+            ], REST_Controller::HTTP_BAD_REQUEST); // NOT_FOUND (404) being the HTTP response code
+        }else{
+            // $data = $this->costeng->deleteCosteng('data_rekruitasi');
+            if( $this->costeng->deleteCosteng('data_rekruitasi',$id) > 0){
+                $this->set_response([
+                    'status' => true,
+                    'data' => $id,
+                    'message' => 'deleted'
+                ], REST_Controller::HTTP_NO_CONTENT); // NOT_FOUND (404) being the HTTP response code
+            }else{
+                $this->set_response([
+                    'status' => false,
+                    'message' => 'id tidak ada'
+                ], REST_Controller::HTTP_BAD_REQUEST); // NOT_FOUND (404) being the HTTP response code
+            }
+        } 
+    }
+
+    public function index_post(){
+        $isi = [
+            'Nama_Calon'=> $this->post('Nama_Calon'),
+            'Email'=> $this->post('Email'),
+            'Link_berkas'=> $this->post('Link_berkas')
+           
+          
+           
+
+
+        ];
+        if ($this->costeng->createCosteng('data_rekruitasi',$isi)> 0){
+            $this->set_response([
+                'status' => true,
+                'message' => 'new data created'
+            ], REST_Controller::HTTP_CREATED); // NOT_FOUND (404) being the HTTP response code
+        }else{
+            $this->set_response([
+                'status' => false,
+                'message' => 'id tidak ada'
+            ], REST_Controller::HTTP_BAD_REQUEST); // NOT_FOUND (404) being the HTTP response code
+        }
+
+        
+    }
+
+    public function index_put(){
+        $id = $this->put('id');
+        $isi = [
+            'Nama_Calon'=> $this->put('Nama_Calon'),
+            'Email'=> $this->put('Email'),
+            'Link_berkas'=> $this->put('Link_berkas')
+           
+        ];
+        if ($this->costeng->updateCosteng('data_rekruitasi',$isi,$id)> 0){
+            $this->set_response([
+                'status' => true,
+                'message' => 'new data updated'
+            ], REST_Controller::HTTP_NO_CONTENT); // NOT_FOUND (404) being the HTTP response code
+        }else{
+            $this->set_response([
+                'status' => false,
+                'message' => 'gagal update'
+            ], REST_Controller::HTTP_BAD_REQUEST); // NOT_FOUND (404) being the HTTP response code
+        }
+
+    }
+
 }

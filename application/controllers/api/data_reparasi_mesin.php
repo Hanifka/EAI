@@ -31,4 +31,80 @@ class data_reparasi_mesin extends REST_Controller {
         }
         
     }
+    public function index_delete(){
+        // $data = $this->costeng->getCosteng('data_reparasi_mesin');
+        $id = $this->delete('id');
+        if( $id === null){
+            $this->set_response([
+                'status' => false,
+                'message' => 'ISI ID !!'
+            ], REST_Controller::HTTP_BAD_REQUEST); // NOT_FOUND (404) being the HTTP response code
+        }else{
+            // $data = $this->costeng->deleteCosteng('data_reparasi_mesin');
+            if( $this->costeng->deleteCosteng('data_reparasi_mesin',$id) > 0){
+                $this->set_response([
+                    'status' => true,
+                    'data' => $id,
+                    'message' => 'deleted'
+                ], REST_Controller::HTTP_NO_CONTENT); // NOT_FOUND (404) being the HTTP response code
+            }else{
+                $this->set_response([
+                    'status' => false,
+                    'message' => 'id tidak ada'
+                ], REST_Controller::HTTP_BAD_REQUEST); // NOT_FOUND (404) being the HTTP response code
+            }
+        } 
+    }
+
+    public function index_post(){
+        $isi = [
+            'Mesin'=> $this->post('Mesin'),
+            'Report_type'=> $this->post('Report_type'),
+            'Risk'=> $this->post('Risk'),
+            'PJ'=> $this->post('PJ'),
+            'indikasi'=> $this->post('indikasi')
+           
+          
+           
+
+
+        ];
+        if ($this->costeng->createCosteng('data_reparasi_mesin',$isi)> 0){
+            $this->set_response([
+                'status' => true,
+                'message' => 'new data created'
+            ], REST_Controller::HTTP_CREATED); // NOT_FOUND (404) being the HTTP response code
+        }else{
+            $this->set_response([
+                'status' => false,
+                'message' => 'id tidak ada'
+            ], REST_Controller::HTTP_BAD_REQUEST); // NOT_FOUND (404) being the HTTP response code
+        }
+
+        
+    }
+
+    public function index_put(){
+        $id = $this->put('id');
+        $isi = [
+            'Mesin'=> $this->put('Mesin'),
+            'Report_type'=> $this->put('Report_type'),
+            'Risk'=> $this->put('Risk'),
+            'PJ'=> $this->put('PJ'),
+            'indikasi'=> $this->put('indikasi')
+           
+        ];
+        if ($this->costeng->updateCosteng('data_reparasi_mesin',$isi,$id)> 0){
+            $this->set_response([
+                'status' => true,
+                'message' => 'new data updated'
+            ], REST_Controller::HTTP_NO_CONTENT); // NOT_FOUND (404) being the HTTP response code
+        }else{
+            $this->set_response([
+                'status' => false,
+                'message' => 'gagal update'
+            ], REST_Controller::HTTP_BAD_REQUEST); // NOT_FOUND (404) being the HTTP response code
+        }
+
+    }
 }
