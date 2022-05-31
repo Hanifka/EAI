@@ -9,22 +9,22 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
+        <a href="<?= site_url('Welcome') ?>" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Engineering</a>
+        <a href="<?= site_url('Engineering') ?>" class="nav-link">Engineering</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Operasional</a>
+        <a href="<?= site_url('Operasional') ?>" class="nav-link">Operasional</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Human Resource</a>
+        <a href="<?= site_url('Humanresoure') ?>" class="nav-link">Human Resource</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Finance</a>
+        <a href="<?= site_url('Finance') ?>" class="nav-link">Finance</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Marketing</a>
+        <a href="<?= site_url('Marketing') ?>" class="nav-link">Marketing</a>
       </li>
     </ul>
 
@@ -68,7 +68,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
+          <li class="nav-item menu-close">
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
@@ -77,8 +77,14 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                <a href="<?= site_url('Engineering') ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Show Data Data</p>
+                </a>
+              </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="<?= site_url('Engineering/Create_Data_engineering') ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Tambah Data</p>
                 </a>
@@ -88,6 +94,114 @@
            -->
             </ul>
           </li>
+
+
+<li class="nav-item menu-close">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Budgeting
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                <a href="<?= site_url('Finance') ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Show Data Data</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?= site_url('Finance/Create_Data_Budgeting') ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Tambah Data</p>
+                </a>
+              </li>
+               <!--   
+
+           -->
+            </ul>
+          </li>
+
+
+<li class="nav-item menu-close">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Periklanan
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                <a href="<?= site_url('Marketing') ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Show Data Data</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?= site_url('Marketing/Create_Data_iklan') ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Tambah Data</p>
+                </a>
+              </li>
+
+                          </ul>
+          </li>
+
+<li class="nav-item menu-close">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Data Rekruitasi
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                <a href="<?= site_url('Humanresoure') ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Show Data Data</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?= site_url('Humanresoure/Create_Data_recruit') ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Tambah Data</p>
+                </a>
+              </li>
+
+                          </ul>
+          </li>
+
+
+
+
+<li class="nav-item menu-close">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Data Reparasi
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                <a href="<?= site_url('Operasional') ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Show Data Data</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?= site_url('Operasional/Create_data_reparasi') ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Tambah Data</p>
+                </a>
+              </li>
+
+                          </ul>
+          </li>
+
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
