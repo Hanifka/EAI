@@ -8,7 +8,11 @@
           <div class="col-sm-6">
             <h1 class="m-0"> Welcome </h1>
             <h5 class="m-0"> Aplikasi Data PFN Padi Flour </h5>
-                  <img src="<?=base_url()."assets/"?>img/Brand.jpg"  class="brand-image" style="opacity: .8">
+            <br>
+                  <!-- <img src="<?=base_url()."assets/"?>img/Brand.jpg"  class="brand-image" style="opacity: .8"> -->
+                   <img src="https://www.fksgroup.com/wp-content/uploads/2021/03/210129_FKS-FA-FI_Website-FI-scaled.jpg"  width="1500" 
+     height="600" class="brand-image" style="opacity: .8">
+    
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">

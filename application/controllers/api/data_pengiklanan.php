@@ -19,16 +19,28 @@ class data_pengiklanan extends REST_Controller {
     }
 
     public function index_get()
-    {
-        $data = $this->costeng->getCosteng('data_pengiklanan');
+    {   
 
+        $id = $this->get('id');
+        if($id === null){
+            $data = $this->costeng->getCosteng('data_pengiklanan');
+        }else{
+            $data = $this->costeng->getCosteng('data_pengiklanan',$id);
+        }
+       
         if ($data){
             $this->set_response([
                 'status' => true,
                 'data' => $data
             ], REST_Controller::HTTP_OK); // NOT_FOUND (404) being the HTTP response code
 
+        }else{
+            $this->set_response([
+                'status' => false,
+                'message' => 'id tidak ada'
+            ], REST_Controller::HTTP_NOT_FOUND); // NOT_FOUND (404) being the HTTP response code
         }
+        
         
     }
     public function index_delete(){
@@ -61,7 +73,6 @@ class data_pengiklanan extends REST_Controller {
             'Purpose'=> $this->post('Purpose'),
             'Platform'=> $this->post('Platform'),
             'Periode'=> $this->post('Periode'),
-            'Periode'=> $this->post('Periode'),
             'Biaya'=> $this->post('Biaya'),
             'PJ'=> $this->post('PJ'),
             'Hasil'=> $this->post('Hasil')
@@ -89,7 +100,6 @@ class data_pengiklanan extends REST_Controller {
         $isi = [
             'Purpose'=> $this->put('Purpose'),
             'Platform'=> $this->put('Platform'),
-            'Periode'=> $this->put('Periode'),
             'Periode'=> $this->put('Periode'),
             'Biaya'=> $this->put('Biaya'),
             'PJ'=> $this->put('PJ'),

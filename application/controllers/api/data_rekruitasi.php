@@ -20,14 +20,24 @@ class data_rekruitasi extends REST_Controller {
 
     public function index_get()
     {
-        $data = $this->costeng->getCosteng('data_rekruitasi');
-
+        
+        $id = $this->get('id');
+        if($id === null){
+            $data = $this->costeng->getCosteng('data_rekruitasi');
+        }else{
+            $data = $this->costeng->getCosteng('data_rekruitasi',$id);
+        }
+       
         if ($data){
             $this->set_response([
                 'status' => true,
                 'data' => $data
             ], REST_Controller::HTTP_OK); // NOT_FOUND (404) being the HTTP response code
-
+        }else{
+            $this->set_response([
+                'status' => false,
+                'message' => 'id tidak ada'
+            ], REST_Controller::HTTP_NOT_FOUND); // NOT_FOUND (404) being the HTTP response code
         }
         
     }

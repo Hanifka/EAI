@@ -20,15 +20,26 @@ class budgeting extends REST_Controller {
 
     public function index_get()
     {
-        $data = $this->costeng->getCosteng('budgeting');
-
+         
+        $id = $this->get('id');
+        if($id === null){
+            $data = $this->costeng->getCosteng('budgeting');
+        }else{
+            $data = $this->costeng->getCosteng('budgeting',$id);
+        }
+       
         if ($data){
             $this->set_response([
                 'status' => true,
                 'data' => $data
             ], REST_Controller::HTTP_OK); // NOT_FOUND (404) being the HTTP response code
-
+        }else{
+            $this->set_response([
+                'status' => false,
+                'message' => 'id tidak ada'
+            ], REST_Controller::HTTP_NOT_FOUND); // NOT_FOUND (404) being the HTTP response code
         }
+        
         
     }
 
