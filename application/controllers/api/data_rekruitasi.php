@@ -25,7 +25,7 @@ class data_rekruitasi extends REST_Controller {
         if($id === null){
             $data = $this->costeng->getCosteng('data_rekruitasi');
         }else{
-            $data = $this->costeng->getCosteng('data_rekruitasi',$id);
+            $data = $this->costeng->getCosteng('data_rekruitasi',$id,'Id');
         }
        
         if ($data){
@@ -51,7 +51,7 @@ class data_rekruitasi extends REST_Controller {
             ], REST_Controller::HTTP_BAD_REQUEST); // NOT_FOUND (404) being the HTTP response code
         }else{
             // $data = $this->costeng->deleteCosteng('data_rekruitasi');
-            if( $this->costeng->deleteCosteng('data_rekruitasi',$id) > 0){
+            if( $this->costeng->deleteCosteng('data_rekruitasi',$id,'Id') > 0){
                 $this->set_response([
                     'status' => true,
                     'data' => $id,
@@ -100,7 +100,7 @@ class data_rekruitasi extends REST_Controller {
             'Link_berkas'=> $this->put('Link_berkas')
            
         ];
-        if ($this->costeng->updateCosteng('data_rekruitasi',$isi,$id)> 0){
+        if ($this->costeng->updateCosteng('data_rekruitasi',$isi,$id,'Id')> 0){
             $this->set_response([
                 'status' => true,
                 'message' => 'new data updated'

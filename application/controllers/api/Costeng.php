@@ -24,7 +24,7 @@ class costeng extends REST_Controller {
         if($id === null){
             $data = $this->costeng->getCosteng('biaya_reparasi');
         }else{
-            $data = $this->costeng->getCosteng('biaya_reparasi',$id);
+            $data = $this->costeng->getCosteng('biaya_reparasi',$id,'ID');
         }
         
 
@@ -52,7 +52,7 @@ class costeng extends REST_Controller {
             ], REST_Controller::HTTP_BAD_REQUEST); // NOT_FOUND (404) being the HTTP response code
         }else{
             // $data = $this->costeng->deleteCosteng('biaya_reparasi');
-            if( $this->costeng->deleteCosteng('biaya_reparasi',$id) > 0){
+            if( $this->costeng->deleteCosteng('biaya_reparasi',$id,'ID') > 0){
                 $this->set_response([
                     'status' => true,
                     'data' => $id,
@@ -103,7 +103,7 @@ class costeng extends REST_Controller {
             'keterangan'=> $this->put('keterangan'),
             'ID_budgeting'=> $this->post('ID_budgeting')
         ];
-        if ($this->costeng->updateCosteng('biaya_reparasi',$isi,$id)> 0){
+        if ($this->costeng->updateCosteng('biaya_reparasi',$isi,$id,'ID')> 0){
             $this->set_response([
                 'status' => true,
                 'message' => 'new data updated'

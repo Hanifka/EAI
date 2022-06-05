@@ -3,17 +3,17 @@
 
 class Costeng_model extends CI_Model
 {
-    public function getCosteng($data,$id = null){
+    public function getCosteng($data,$id = null,$conditional){
         if( $id === null ){
             return $this->db->get($data)->result_array();
         }else{
-            return $this->db->get_where($data,['id'=> $id])->result_array();
+            return $this->db->get_where($data,[$conditional=> $id])->result_array();
         }
         // return $this->db->get($data)->result_array();
     }
 
-    public function deleteCosteng($data,$id){
-        $this->db->delete($data,['id'=> $id]);
+    public function deleteCosteng($data,$id,$conditional){
+        $this->db->delete($data,[$conditional=> $id]);
         return $this->db->affected_rows();
 
     }
@@ -21,8 +21,8 @@ class Costeng_model extends CI_Model
         $this->db->insert($data,$isi);
         return $this->db->affected_rows();
     }
-    public function updateCosteng($data,$isi,$id){
-        $this->db->update($data,$isi,['id'=>$id]);
+    public function updateCosteng($data,$isi,$id,$conditional){
+        $this->db->update($data,$isi,[$conditional=>$id]);
         return $this->db->affected_rows();
     }
 }

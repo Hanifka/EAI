@@ -25,7 +25,7 @@ class data_pengiklanan extends REST_Controller {
         if($id === null){
             $data = $this->costeng->getCosteng('data_pengiklanan');
         }else{
-            $data = $this->costeng->getCosteng('data_pengiklanan',$id);
+            $data = $this->costeng->getCosteng('data_pengiklanan',$id,'id');
         }
        
         if ($data){
@@ -53,7 +53,7 @@ class data_pengiklanan extends REST_Controller {
             ], REST_Controller::HTTP_BAD_REQUEST); // NOT_FOUND (404) being the HTTP response code
         }else{
             // $data = $this->costeng->deleteCosteng('data_pengiklanan');
-            if( $this->costeng->deleteCosteng('data_pengiklanan',$id) > 0){
+            if( $this->costeng->deleteCosteng('data_pengiklanan',$id,'id') > 0){
                 $this->set_response([
                     'status' => true,
                     'data' => $id,
@@ -106,7 +106,7 @@ class data_pengiklanan extends REST_Controller {
             'Hasil'=> $this->put('Hasil')
            
         ];
-        if ($this->costeng->updateCosteng('data_pengiklanan',$isi,$id)> 0){
+        if ($this->costeng->updateCosteng('data_pengiklanan',$isi,$id,'id')> 0){
             $this->set_response([
                 'status' => true,
                 'message' => 'new data updated'

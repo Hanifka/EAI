@@ -25,7 +25,7 @@ class data_reparasi_mesin extends REST_Controller {
         if($id === null){
             $data = $this->costeng->getCosteng('data_reparasi_mesin');
         }else{
-            $data = $this->costeng->getCosteng('data_reparasi_mesin',$id);
+            $data = $this->costeng->getCosteng('data_reparasi_mesin',$id,'ID');
         }
        
 
@@ -56,7 +56,7 @@ class data_reparasi_mesin extends REST_Controller {
             ], REST_Controller::HTTP_BAD_REQUEST); // NOT_FOUND (404) being the HTTP response code
         }else{
             // $data = $this->costeng->deleteCosteng('data_reparasi_mesin');
-            if( $this->costeng->deleteCosteng('data_reparasi_mesin',$id) > 0){
+            if( $this->costeng->deleteCosteng('data_reparasi_mesin',$id,'ID') > 0){
                 $this->set_response([
                     'status' => true,
                     'data' => $id,
@@ -109,7 +109,7 @@ class data_reparasi_mesin extends REST_Controller {
             'indikasi'=> $this->put('indikasi')
            
         ];
-        if ($this->costeng->updateCosteng('data_reparasi_mesin',$isi,$id)> 0){
+        if ($this->costeng->updateCosteng('data_reparasi_mesin',$isi,$id,'ID')> 0){
             $this->set_response([
                 'status' => true,
                 'message' => 'new data updated'

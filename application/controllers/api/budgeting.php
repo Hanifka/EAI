@@ -21,15 +21,17 @@ class budgeting extends REST_Controller {
     public function index_get()
     {
          
-        $id = $this->get('id');
+        $id = $this->get('ID');
         if($id === null){
             $data = $this->costeng->getCosteng('budgeting');
         }else{
-            $data = $this->costeng->getCosteng('budgeting',$id);
+
+            $data = $this->costeng->getCosteng('budgeting',$id,'ID');
         }
        
         if ($data){
             $this->set_response([
+                'ID' => $id,
                 'status' => true,
                 'data' => $data
             ], REST_Controller::HTTP_OK); // NOT_FOUND (404) being the HTTP response code
@@ -45,15 +47,16 @@ class budgeting extends REST_Controller {
 
     public function index_delete(){
         // $data = $this->costeng->getCosteng('budgeting');
-        $id = $this->delete('id');
+        $id = $this->delete('ID');
         if( $id === null){
             $this->set_response([
+                'ID' => $id,
                 'status' => false,
                 'message' => 'ISI ID !!'
             ], REST_Controller::HTTP_BAD_REQUEST); // NOT_FOUND (404) being the HTTP response code
         }else{
             // $data = $this->costeng->deleteCosteng('budgeting');
-            if( $this->costeng->deleteCosteng('budgeting',$id) > 0){
+            if( $this->costeng->deleteCosteng('budgeting',$id,'ID') > 0){
                 $this->set_response([
                     'status' => true,
                     'data' => $id,
@@ -95,7 +98,7 @@ class budgeting extends REST_Controller {
     }
 
     public function index_put(){
-        $id = $this->put('id');
+        $id = $this->put('ID');
         $isi = [
             'Nama_issues'=> $this->put('Nama_issues'),
             'Divisi'=> $this->put('Divisi'),
@@ -103,7 +106,7 @@ class budgeting extends REST_Controller {
             'Status'=> $this->put('Status'),
             'keterangan'=> $this->put('keterangan')
         ];
-        if ($this->costeng->updateCosteng('budgeting',$isi,$id)> 0){
+        if ($this->costeng->updateCosteng('budgeting',$isi,$id,'ID')> 0){
             $this->set_response([
                 'status' => true,
                 'message' => 'new data updated'
