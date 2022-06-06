@@ -3,7 +3,7 @@
 
 class Costeng_model extends CI_Model
 {
-    public function getCosteng($data,$id = null,$conditional){
+    public function getCosteng($data,$id = null,$conditional = null){
         if( $id === null ){
             return $this->db->get($data)->result_array();
         }else{
