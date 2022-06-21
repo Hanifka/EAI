@@ -75,7 +75,7 @@ class Budgeting extends REST_Controller {
         $isi = [
             'Nama_issues'=> $this->post('Nama_issues'),
             'Divisi'=> $this->post('Divisi'),
-            'Biaya_Reparasi'=> $this->post('Biaya_Reparasi'),
+            'Biaya'=> $this->post('Biaya'),
             'Status'=> $this->post('Status'),
             'keterangan'=> $this->post('keterangan')
            
@@ -102,7 +102,7 @@ class Budgeting extends REST_Controller {
         $isi = [
             'Nama_issues'=> $this->put('Nama_issues'),
             'Divisi'=> $this->put('Divisi'),
-            'Biaya_Reparasi'=> $this->put('Biaya_Reparasi'),
+            'Biaya'=> $this->put('Biaya'),
             'Status'=> $this->put('Status'),
             'keterangan'=> $this->put('keterangan')
         ];

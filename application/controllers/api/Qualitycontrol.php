@@ -112,7 +112,7 @@ class qualitycontrol extends REST_Controller {
     public function index_put(){
         $id = $this->put('ID');
         $isi = [
-             'Nama_mesin' => $this->put('Nama_mesin'),
+            'Nama_mesin' => $this->put('Nama_mesin'),
             'Time' => date('H:i:s'),
             'PJ'=> $this->put('PJ'),
             'Quality' => $this->put('Quality'),
@@ -125,7 +125,7 @@ class qualitycontrol extends REST_Controller {
             // 'Status'=> $this->put('Status'),
             // 'keterangan'=> $this->put('keterangan')
         ];
-        if ($this->costeng->updateCosteng('data_absensi',$isi,$id,'ID')> 0){
+        if ($this->costeng->updateCosteng('data_qc',$isi,$id,'ID')> 0){
             $this->set_response([
                 'status21' => $id,
                 'status' => true,

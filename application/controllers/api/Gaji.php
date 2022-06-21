@@ -10,7 +10,7 @@ require APPPATH . 'libraries/Format.php';
 
 
 
-class gaji extends REST_Controller {
+class Gaji extends REST_Controller {
 
     public function __construct()
     {
